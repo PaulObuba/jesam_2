@@ -1,20 +1,15 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200;300;600;700;800&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200;300;600;700;800&display=swap");
 
 :root {
-  --main-color: #D5FF3F;
+  --main-color: #d5ff3f;
   --black: #000;
   --white: #fff;
   --light-white: #aaa;
   --light-bg: #aaa;
 }
 
-
 * {
-  /* overflow-x: hidden; */
   transition: all 0.2s linear;
-
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -29,7 +24,7 @@ body {
   background-color: var(--main-color);
   font-size: 1rem;
   font-weight: 200;
-  font-family: 'Roboto Slab', serif;
+  font-family: "Roboto Slab", serif;
 }
 
 /* navigation */
@@ -39,9 +34,9 @@ header .container {
   justify-content: space-between;
   align-items: center;
   font-size: 3rem;
-  font-weight: 600; 
-  padding: 1rem 3rem;
-
+  font-weight: 600;
+  padding: 0 3rem;
+  min-height: 8rem;
   position: relative;
 }
 
@@ -58,21 +53,238 @@ header .container {
 
 header .logo {
   cursor: pointer;
-} 
+}
 
-header #menu-btn { 
+header #menu-btn {
   font-size: 2.2rem;
+  transition: all 1s ease;
   cursor: pointer;
   z-index: 100;
 }
 
 header .fa-times {
-  color: var(--main-color)
+  color: var(--main-color);
+  transform: rotate(180deg);
 }
 
+.mobile,
 nav {
   position: absolute;
   top: 0;
   bottom: 0;
-  right: -50%;
+  left: 0;
+  right: -150%;
+
+  display: flex;
+  flex-direction: column;
+  color: var(--main-color);
+  background-color: var(--black);
+  opacity: 0;
+  padding: 2rem;
+  transition: all 1.3s ease-in-out;
+  /* clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%); */
+}
+
+.mobile {
+  top: 0;
+  bottom: 0;
+  right: 0;
+
+  opacity: 1;
+  z-index: 50;
+  /* clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%); */
+}
+
+nav h2 {
+  padding: 1rem 2rem 2rem;
+}
+
+nav .menu::after {
+  content: "";
+  height: 0.1rem;
+  background-color: var(--main-color);
+
+  position: absolute;
+  left: 2rem;
+  right: 2rem;
+}
+
+nav a {
+  display: block;
+  color: var(--main-color);
+  text-align: center;
+  text-decoration: none;
+  font-size: 4.5rem;
+  font-weight: 600;
+  padding: 0.5rem;
+  margin: auto;
+}
+
+/* Hero Section */
+
+.hero {
+  min-width: 100%;
+  min-height: calc(100vh - 8rem);
+}
+
+.toggle_slide,
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  width: 100%;
+  padding: 5rem 0 4rem 8rem;
+
+  position: absolute;
+  left: 0;
+  transition: all 1s ease-in-out;
+}
+
+.toggle_slide {
+  left: -80%;
+  transition: all 2s ease-in-out;
+}
+
+.hero .content h1 {
+  font-size: 5rem;
+}
+
+.hero .content .btn {
+  font-size: 2rem;
+  color: var(--main-color);
+  background-color: var(--black);
+  border: none;
+  outline: none;
+  padding: 0.7rem 2.4rem;
+  margin-top: 4rem;
+}
+
+.hero .content .btn:hover {
+  color: var(--black);
+  background-color: var(--main-color);
+  border: 2px solid var(--black);
+  cursor: pointer;
+}
+
+.hero .content .photo_rotate {
+  position: absolute;
+  bottom: 3rem;
+  right: 10%;
+  width: 13rem;
+
+  animation: rotation 15s linear infinite;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+/* Greeting Section */
+
+/* .greeting {
+  height: 100rem;
+  position: relative;
+} */
+
+.greeting h2 {
+  /* position: sticky;
+  top: 10%; */
+  font-size: 4rem;
+  text-align: center;
+  padding-left: 8rem;
+  z-index: 100;
+}
+
+.greeting .image {
+  background-image: url("./images/profile.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  /* position: sticky;
+  top: 0; */
+
+  width: 100%;
+  height: 100vh;
+}
+
+/* Projects Section */
+
+.projects {
+  color: var(--main-color);
+  background-color: var(--black);
+}
+
+.projects .slider {
+  position: sticky;
+  top: 0;
+  
+}
+
+.projects h2 {
+  font-size: 3rem;
+  padding: 2rem;
+
+  position: relative;
+}
+
+.projects h2::after {
+  content: "";
+  height: 0.1rem;
+  background-color: var(--main-color);
+
+  position: absolute;
+  left: 0.3rem;
+  right: 0.3rem;
+  bottom: 0;
+}
+
+.inner_slider {
+  display: flex;
+  gap: 1rem;
+  height: 43rem;
+  padding: 3rem;
+}
+
+.item {
+  height: 100%;
+  flex: 0 0 400px;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  padding-left: 1.5rem;
+
+  border-radius: 1rem;
+  background-size: cover;
+  background-position: center;
+}
+
+.item .img .project_detail {
+  position: absolute;
+  bottom: 2rem;
+}
+
+.img div h3 {
+  font-size: 2rem;
+}
+
+.item .img .project_detail div {
+  display: flex;
+  justify-content: space-between;
+  gap: 6rem;
+  align-items: center;
+}
+
+.img .project_detail div i {
+  font-size: 1.3rem;
+  font-weight: 700;
+  cursor: pointer;
+  transform: scaleX(2);
 }
